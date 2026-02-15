@@ -10,6 +10,7 @@ from playwright.async_api import Page
 from hcaptcha_challenger import AgentV, AgentConfig, CaptchaResponse
 from hcaptcha_challenger.utils import SiteKey
 
+url = os.getenv("URL")
 comando = os.getenv("COMANDO")
 
 async def challenge(page: Page) -> AgentV:
@@ -38,7 +39,7 @@ async def main():
     ) as browser:
         page = browser.pages[-1] if browser.pages else await browser.new_page()
 
-        await page.goto("https://terminator.aeza.net/", wait_until="domcontentloaded")
+        await page.goto(url, wait_until="domcontentloaded")
         await page.wait_for_timeout(5000)
         await page.wait_for_selector('button.button[data-type="linux"]')
         await page.click('button.button[data-type="linux"]')
