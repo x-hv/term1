@@ -11,6 +11,9 @@ from playwright.async_api import Page
 from hcaptcha_challenger import AgentV, AgentConfig, CaptchaResponse
 from hcaptcha_challenger.utils import SiteKey
 
+from dotenv import load_dotenv
+load_dotenv()
+
 MAX_RETRIES = 5  # None = infinito
 url = os.getenv("URL")
 comando = os.getenv("COMANDO")
